@@ -1,0 +1,452 @@
+from collections import namedtuple
+import datetime
+Detalle = namedtuple("Detalle", ("nueva_clave","cantidad","descripcion", "precio_unitario"))
+Folio={}
+v=[]
+def registro():
+    global Folio
+    while True:
+        print('-_-'*30)
+        print('[1]Reparacion')
+        print('[2]Limpieza')
+        print('[3]Compra')
+        print('[4]Salir')
+        print('-_-'*30)
+        option= int(input("\nSeleciona una opcion: "))
+        #creacion de un while para poder agregar 1 o mas equipos
+        if option==1:
+            print('-_-'*30)
+            servicion=print(f"El servicio que a escogido es: Reparacion ")
+            while True:
+                lista_detalle = list()
+                clave = 1
+                acumulado = 0
+                print('-_-'*30)
+                print('[1]Servicio de instalacion y recuperacion sistemas operativo: windows y IOs')
+                print('[2]Mantenimiento de computo')
+                print('[3]Armado de computadoras')
+                print('[4]Salir')
+                print('-_-'*30)
+                option= int(input("\nSeleciona una opcion: "))
+                if option == 1: #servicio inst y recup
+                    cliente = input("Cliente al que se le realizó la venta: ")
+                    while True:
+                        try:
+                            fecha_str = input("Fecha de la venta en formato (dd/mm/aaaa): ")
+                            fecha = datetime.datetime.strptime(fecha_str, "%d/%m/%Y").date()
+                        except ValueError:
+                            print("El valor de la fecha que fue proporcionado no puede ser procesado")
+                            continue
+                        except Exception:
+                            print("Se ha presentado una excepción")
+                            break
+                        else:
+                            while clave != 0:
+                                clave = int(input("\nIndique la clave del artículo <0 para salir>: "))
+                                if clave == 0:
+                                    break
+                                else:
+                                    descripcion=print('print')#descrfipcion de los equipos
+                                    cantidad = int(input("Indique la cantidad de artículos: "))
+                                    precio_unitario = float(input("Indique el precio unitario para este artículo: "))
+                                    detalle = Detalle(clave, cantidad,descripcion ,precio_unitario)
+                                    lista_detalle.append(detalle)
+                                    v.append(detalle)
+                                    acumulado += (cantidad * precio_unitario)
+                            if acumulado == 0:
+                                print("\nLa venta no contiene detalle alguno, por lo tanto no se registra")
+                            else:
+                                print(f"\nEl total de la venta antes de impuestos es de ${acumulado:.2f}")
+                                print("El listado de la venta es: ")
+                                print(f"\nVenta realizada a {cliente} con fecha de {fecha}")
+                                print("-" * 55)
+                                print("nueva_clave\tCantidad\tPrecio Unitario\tnueva_clave")
+                                for detalle in lista_detalle:
+                                    print(f"{detalle.nueva_clave}\t\t\t{detalle.cantidad}\t\t${detalle.precio_unitario:.2f}")
+                                    print("-" * 55)
+                                    if Folio.keys():
+                                        nueva_clave = nueva_clave = max(Folio.keys())+1
+                                    else: nueva_clave= 1
+                                    Folio[nueva_clave]=Detalle
+                                    print(f"Su folio es {nueva_clave} ")
+                                    print('--'*30)
+                        break
+                elif option == 2:#Maten Compu
+                    cliente = input("Cliente al que se le realizó la venta: ")
+                    while True:
+                        try:
+                            fecha_str = input("Fecha de la venta en formato (dd/mm/aaaa): ")
+                            fecha = datetime.datetime.strptime(fecha_str, "%d/%m/%Y").date()
+                        except ValueError:
+                            print("El valor de la fecha que fue proporcionado no puede ser procesado")
+                            continue
+                        except Exception:
+                            print("Se ha presentado una excepción")
+                            break
+                        else:
+                            while clave != 0:
+                                clave = int(input("\nIndique la clave del artículo <0 para salir>: "))
+                                if clave == 0:
+                                    break
+                                else:
+                                    descripcion=print('print')#descrfipcion de los equipos
+                                    cantidad = int(input("Indique la cantidad de artículos: "))
+                                    precio_unitario = float(input("Indique el precio unitario para este artículo: "))
+                                    detalle = Detalle(clave, cantidad,descripcion ,precio_unitario)
+                                    lista_detalle.append(detalle)
+                                    acumulado += (cantidad * precio_unitario)
+                            if acumulado == 0:
+                                print("\nLa venta no contiene detalle alguno, por lo tanto no se registra")
+                            else:
+                                print(f"\nEl total de la venta antes de impuestos es de ${acumulado:.2f}")
+                                print("El listado de la venta es: ")
+                                print(f"\nVenta realizada a {cliente} con fecha de {fecha}")
+                                print("-" * 55)
+                                print("nueva_clave\tCantidad\tPrecio Unitario\tnueva_clave")
+                                for detalle in lista_detalle:
+                                    print(f"{detalle.nueva_clave}\t\t\t{detalle.cantidad}\t\t${detalle.precio_unitario:.2f}")
+                                    print("-" * 55)
+                                    if Folio.keys():
+                                        nueva_clave = nueva_clave = max(Folio.keys())+1
+                                    else: nueva_clave= 1
+                                    Folio[nueva_clave]=Detalle
+                                    print(f"Su folio es {nueva_clave} ")
+                                    print('--'*30)
+                        break
+                    #se debera tabular con el desglose correspondiente del detalle de cada servicio segun corresponda
+                elif option == 3: # armado de computo
+                    cliente = input("Cliente al que se le realizó la venta: ")
+                    while True:
+                        try:
+                            fecha_str = input("Fecha de la venta en formato (dd/mm/aaaa): ")
+                            fecha = datetime.datetime.strptime(fecha_str, "%d/%m/%Y").date()
+                        except ValueError:
+                            print("El valor de la fecha que fue proporcionado no puede ser procesado")
+                            continue
+                        except Exception:
+                            print("Se ha presentado una excepción")
+                            break
+                        else:
+                            while clave != 0:
+                                clave = int(input("\nIndique la clave del artículo <0 para salir>: "))
+                                if clave == 0:
+                                    break
+                                else:
+                                    descripcion=print('print')#descrfipcion de los equipos
+                                    cantidad = int(input("Indique la cantidad de artículos: "))
+                                    precio_unitario = float(input("Indique el precio unitario para este artículo: "))
+                                    detalle = Detalle(clave, cantidad,descripcion ,precio_unitario)
+                                    lista_detalle.append(detalle)
+                                    acumulado += (cantidad * precio_unitario)
+                            if acumulado == 0:
+                                print("\nLa venta no contiene detalle alguno, por lo tanto no se registra")
+                            else:
+                                print(f"\nEl total de la venta antes de impuestos es de ${acumulado:.2f}")
+                                print("El listado de la venta es: ")
+                                print(f"\nVenta realizada a {cliente} con fecha de {fecha}")
+                                print("-" * 55)
+                                print("nueva_clave\tCantidad\tPrecio Unitario\tnueva_clave")
+                                for detalle in lista_detalle:
+                                    print(f"{detalle.nueva_clave}\t\t\t{detalle.cantidad}\t\t${detalle.precio_unitario:.2f}")
+                                    print("-" * 55)
+                                    if Folio.keys():
+                                        nueva_clave = nueva_clave = max(Folio.keys())+1
+                                    else: nueva_clave= 1
+                                    Folio[nueva_clave]=Detalle
+                                    print(f"Su folio es {nueva_clave} ")
+                                    print('--'*30)
+                        break
+                elif option == 4:
+                    print('hasta luego,vuelva pronto')
+                    print(':('*30)
+                    break
+            #menu = tipo de reparacion(servicio de instalacion y recuperacion de windows,mantenimiento de computo,armado de computadoras.)
+        #creacion de un while para poder agregar 1 o mas equipos
+        elif option==2:
+            lista_detalle = list()
+            clave = 1
+            acumulado = 0
+            print('-_-'*30)
+            cliente = input("Cliente al que se le realizó la venta: ")
+            while True:
+                try:
+                    fecha_str = input("Fecha de la venta en formato (dd/mm/aaaa): ")
+                    fecha = datetime.datetime.strptime(fecha_str, "%d/%m/%Y").date()
+                except ValueError:
+                    print("El valor de la fecha que fue proporcionado no puede ser procesado")
+                    continue
+                except Exception:
+                    print("Se ha presentado una excepción")
+                    break
+                else:
+                    while clave != 0:
+                        clave = int(input("\nIndique la clave del artículo <0 para salir>: "))
+                        if clave == 0:
+                            break
+                        else:
+                            descripcion=print('print')#descrfipcion de los equipos
+                            cantidad = int(input("Indique la cantidad de artículos: "))
+                            precio_unitario = float(input("Indique el precio unitario para este artículo: "))
+                            detalle = Detalle(clave, cantidad,descripcion ,precio_unitario)
+                            lista_detalle.append(detalle)
+                            acumulado += (cantidad * precio_unitario)
+                    if acumulado == 0:
+                        print("\nLa venta no contiene detalle alguno, por lo tanto no se registra")
+                    else:
+                        print(f"\nEl total de la venta antes de impuestos es de ${acumulado:.2f}")
+                        print("El listado de la venta es: ")
+                        print(f"\nVenta realizada a {cliente} con fecha de {fecha}")
+                        print("-" * 55)
+                        print("nueva_clave\tCantidad\tPrecio Unitario\tnueva_clave")
+                        for detalle in lista_detalle:
+                            print(f"{detalle.nueva_clave}\t\t\t{detalle.cantidad}\t\t${detalle.precio_unitario:.2f}")
+                        print("-" * 55)
+                        if Folio.keys():
+                            nueva_clave = nueva_clave = max(Folio.keys())+1
+                        else: nueva_clave= 1
+                        Folio[nueva_clave]=Detalle
+                        print(f"Su folio es {nueva_clave} ")
+                        print('--'*30)
+                break
+        elif option==3:#comprar
+        #elaborar un menu con las cosas a vender
+        #creacion de un while para poder agregar 1 o mas equipos
+            servicion=print(f"El servicio que se a escogido es: Compra ")
+            descripcion=print(f"Descripcion: se deplegara un menu con nuestros articulos, despues de eso podra continuar con sus compras  ")
+            while True:
+                print('[1]equipo de comunicacion')
+                print('[2]Licencias de office')
+                print('[3]Salir')
+                print('-_-'*30)
+                option= int(input("\nSeleciona una opcion: "))
+                if option == 1:#equipo de computo
+                    while True:
+                        lista_detalle = list()
+                        clave = 1
+                        acumulado = 0
+                        print('-_-'*30)
+                        print('[1]celulares')
+                        print('[2]Tablets')
+                        print('[3]laptops')
+                        print('[4]Salir')
+                        option= int(input("\nSeleciona una opcion: "))
+                        if option == 1:
+                            cliente = input("Cliente al que se le realizó la venta: ")
+                            while True:
+                                try:
+                                    fecha_str = input("Fecha de la venta en formato (dd/mm/aaaa): ")
+                                    fecha = datetime.datetime.strptime(fecha_str, "%d/%m/%Y").date()
+                                except ValueError:
+                                    print("El valor de la fecha que fue proporcionado no puede ser procesado")
+                                    continue
+                                except Exception:
+                                    print("Se ha presentado una excepción")
+                                    break
+                                else:
+                                    while clave != 0:
+                                        clave = int(input("\nIndique la clave del artículo <0 para salir>: "))
+                                        if clave == 0:
+                                            break
+                                        else:
+                                            descripcion=print('print')#descrfipcion de los equipos
+                                            cantidad = int(input("Indique la cantidad de artículos: "))
+                                            precio_unitario = float(input("Indique el precio unitario para este artículo: "))
+                                            detalle = Detalle(clave, cantidad,descripcion ,precio_unitario)
+                                            lista_detalle.append(detalle)
+                                            acumulado += (cantidad * precio_unitario)
+                                    if acumulado == 0:
+                                        print("\nLa venta no contiene detalle alguno, por lo tanto no se registra")
+                                    else:
+                                        print(f"\nEl total de la venta antes de impuestos es de ${acumulado:.2f}")
+                                        print("El listado de la venta es: ")
+                                        print(f"\nVenta realizada a {cliente} con fecha de {fecha}")
+                                        print("-" * 55)
+                                        print("nueva_clave\tCantidad\tPrecio Unitario\tnueva_clave")
+                                        for detalle in lista_detalle:
+                                            print(f"{detalle.nueva_clave}\t\t\t{detalle.cantidad}\t\t${detalle.precio_unitario:.2f}")
+                                            print("-" * 55)
+                                        if Folio.keys():
+                                            nueva_clave = nueva_clave = max(Folio.keys())+1
+                                        else: nueva_clave= 1
+                                        Folio[nueva_clave]=Detalle
+                                        print(f"Su folio es {nueva_clave} ")
+                                        print('--'*30)
+                                break
+                        elif option == 2:
+                            cliente = input("Cliente al que se le realizó la venta: ")
+                            while True:
+                                try:
+                                    fecha_str = input("Fecha de la venta en formato (dd/mm/aaaa): ")
+                                    fecha = datetime.datetime.strptime(fecha_str, "%d/%m/%Y").date()
+                                except ValueError:
+                                    print("El valor de la fecha que fue proporcionado no puede ser procesado")
+                                    continue
+                                except Exception:
+                                    print("Se ha presentado una excepción")
+                                    break
+                                else:
+                                    while clave != 0:
+                                        clave = int(input("\nIndique la clave del artículo <0 para salir>: "))
+                                        if clave == 0:
+                                            break
+                                        else:
+                                            descripcion=print('print')#descrfipcion de los equipos
+                                            cantidad = int(input("Indique la cantidad de artículos: "))
+                                            precio_unitario = float(input("Indique el precio unitario para este artículo: "))
+                                            detalle = Detalle(clave, cantidad,descripcion ,precio_unitario)
+                                            lista_detalle.append(detalle)
+                                            acumulado += (cantidad * precio_unitario)
+                                    if acumulado == 0:
+                                        print("\nLa venta no contiene detalle alguno, por lo tanto no se registra")
+                                    else:
+                                        print(f"\nEl total de la venta antes de impuestos es de ${acumulado:.2f}")
+                                        print("El listado de la venta es: ")
+                                        print(f"\nVenta realizada a {cliente} con fecha de {fecha}")
+                                        print("-" * 55)
+                                        print("nueva_clave\tCantidad\tPrecio Unitario\tnueva_clave")
+                                        for detalle in lista_detalle:
+                                            print(f"{detalle.nueva_clave}\t\t\t{detalle.cantidad}\t\t${detalle.precio_unitario:.2f}")
+                                            print("-" * 55)
+                                        if Folio.keys():
+                                            nueva_clave = nueva_clave = max(Folio.keys())+1
+                                        else: nueva_clave= 1
+                                        Folio[nueva_clave]=Detalle
+                                        print(f"Su folio es {nueva_clave} ")
+                                        print('--'*30)
+                                break
+                        #se debera tabular con el desglose correspondiente del detalle de cada servicio segun corresponda
+                        elif option == 3:
+                            cliente = input("Cliente al que se le realizó la venta: ")
+                            while True:
+                                try:
+                                    fecha_str = input("Fecha de la venta en formato (dd/mm/aaaa): ")
+                                    fecha = datetime.datetime.strptime(fecha_str, "%d/%m/%Y").date()
+                                except ValueError:
+                                    print("El valor de la fecha que fue proporcionado no puede ser procesado")
+                                    continue
+                                except Exception:
+                                    print("Se ha presentado una excepción")
+                                    break
+                                else:
+                                    while clave != 0:
+                                        clave = int(input("\nIndique la clave del artículo <0 para salir>: "))
+                                        if clave == 0:
+                                            break
+                                        else:
+                                            descripcion=print('print')#descrfipcion de los equipos
+                                            cantidad = int(input("Indique la cantidad de artículos: "))
+                                            precio_unitario = float(input("Indique el precio unitario para este artículo: "))
+                                            detalle = Detalle(clave, cantidad,descripcion ,precio_unitario)
+                                            lista_detalle.append(detalle)
+                                            acumulado += (cantidad * precio_unitario)
+                                    if acumulado == 0:
+                                        print("\nLa venta no contiene detalle alguno, por lo tanto no se registra")
+                                    else:
+                                        print(f"\nEl total de la venta antes de impuestos es de ${acumulado:.2f}")
+                                        print("El listado de la venta es: ")
+                                        print(f"\nVenta realizada a {cliente} con fecha de {fecha}")
+                                        print("-" * 55)
+                                        print("nueva_clave\tCantidad\tPrecio Unitario\tnueva_clave")
+                                        for detalle in lista_detalle:
+                                            print(f"{detalle.nueva_clave}\t\t\t{detalle.cantidad}\t\t${detalle.precio_unitario:.2f}")
+                                            print("-" * 55)
+                                        if Folio.keys():
+                                            nueva_clave = nueva_clave = max(Folio.keys())+1
+                                        else: nueva_clave= 1
+                                        Folio[nueva_clave]=Detalle
+                                        print(f"Su folio es {nueva_clave} ")
+                                        print('--'*30)
+                                break
+                        elif option == 4:
+                            print('hasta luego,vuelva pronto')
+                            print(':('*30)
+                            break
+                elif option == 2:#licencia de office
+                    cliente = input("Cliente al que se le realizó la venta: ")
+                    while True:
+                        try:
+                            fecha_str = input("Fecha de la venta en formato (dd/mm/aaaa): ")
+                            fecha = datetime.datetime.strptime(fecha_str, "%d/%m/%Y").date()
+                        except ValueError:
+                            print("El valor de la fecha que fue proporcionado no puede ser procesado")
+                            continue
+                        except Exception:
+                            print("Se ha presentado una excepción")
+                            break
+                        else:
+                            while clave != 0:
+                                clave = int(input("\nIndique la clave del artículo <0 para salir>: "))
+                                if clave == 0:
+                                    break
+                                else:
+                                    descripcion=print('print')#descrfipcion de los equipos
+                                    cantidad = int(input("Indique la cantidad de artículos: "))
+                                    precio_unitario = float(input("Indique el precio unitario para este artículo: "))
+                                    detalle = Detalle(clave, cantidad,descripcion ,precio_unitario)
+                                    lista_detalle.append(detalle)
+                                    acumulado += (cantidad * precio_unitario)
+                            if acumulado == 0:
+                                print("\nLa venta no contiene detalle alguno, por lo tanto no se registra")
+                            else:
+                                print(f"\nEl total de la venta antes de impuestos es de ${acumulado:.2f}")
+                                print("El listado de la venta es: ")
+                                print(f"\nVenta realizada a {cliente} con fecha de {fecha}")
+                                print("-" * 55)
+                                print("nueva_clave\tCantidad\tPrecio Unitario\tnueva_clave")
+                                for detalle in lista_detalle:
+                                    print(f"{detalle.nueva_clave}\t\t\t{detalle.cantidad}\t\t${detalle.precio_unitario:.2f}")
+                                print("-" * 55)
+                                if Folio.keys():
+                                    nueva_clave = nueva_clave = max(Folio.keys())+1
+                                else: nueva_clave= 1
+                                Folio[nueva_clave]=Detalle
+                                print('--'*30)
+                        break
+                elif option == 3:
+                    print('hasta luego,vuelva pronto')
+                    print(':('*30)
+                    break
+        elif option==4:
+            print('hasta luego, vuelva pronto')
+            break
+
+def listar():
+    global Detalle
+    busqueda = input('Introduzca el folio a buscar: ')
+    for elemento in v:
+        print(f'Cantidad vendida: {elemento.nueva_clave} ')
+        print(f'Cantidad vendida: {elemento.cantidad} ')
+        print(f'Descripcion del articulo: {elemento.descripcion}' )
+        print(f'Precio de venta: {elemento.precio_unitario} ')
+        print("")
+        break
+
+def check_correo():
+    busq_fecha = input('Introduzca la fecha de la venta a buscar: ')
+    for elemento in v:
+        print(f'Cantidad vendida: {elemento.nueva_clave} ')
+        print(f'Cantidad vendida: {elemento.cantidad} ')
+        print(f'Descripcion del articulo: {elemento.descripcion}' )
+        print(f'Precio de venta: {elemento.precio_unitario} ')
+        print("")
+        break
+
+while True:
+    print('-_-'*30)
+    print('[1]Registro de un servicio')
+    print('[2]Consultar un servicio')
+    print('[3]Fecha de un servicio')
+    print('[4]Salir')
+    print('-_-'*30)
+    option= int(input("\nSeleciona una opcion: "))
+    if option == 1:
+            registro()
+    elif option == 2:
+            listar()
+        #se debera tabular con el desglose correspondiente del detalle de cada servicio segun corresponda
+    elif option == 3:
+            check_correo()
+    elif option == 4:
+        print('hasta luego,vuelva pronto')
+        print(':('*30)
+        break
